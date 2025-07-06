@@ -1,0 +1,38 @@
+[05-Jul-2025 10:30:19 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "cfapi_handle_form_submission" not found or invalid function name in E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php:324
+Stack trace:
+#0 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#1 E:\xampp\htdocs\wordpress-demo\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 E:\xampp\htdocs\wordpress-demo\wp-admin\admin-ajax.php(192): do_action('wp_ajax_cfapi_s...')
+#3 {main}
+  thrown in E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php on line 324
+[05-Jul-2025 10:35:02 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "cfapi_handle_form_submission" not found or invalid function name in E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php:324
+Stack trace:
+#0 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#1 E:\xampp\htdocs\wordpress-demo\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 E:\xampp\htdocs\wordpress-demo\wp-admin\admin-ajax.php(192): do_action('wp_ajax_cfapi_s...')
+#3 {main}
+  thrown in E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php on line 324
+[05-Jul-2025 10:41:04 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "cfapi_handle_form_submission" not found or invalid function name in E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php:324
+Stack trace:
+#0 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#1 E:\xampp\htdocs\wordpress-demo\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 E:\xampp\htdocs\wordpress-demo\wp-admin\admin-ajax.php(192): do_action('wp_ajax_cfapi_s...')
+#3 {main}
+  thrown in E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php on line 324
+[05-Jul-2025 10:43:22 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "cfapi_handle_form_submission" not found or invalid function name in E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php:324
+Stack trace:
+#0 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#1 E:\xampp\htdocs\wordpress-demo\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 E:\xampp\htdocs\wordpress-demo\wp-admin\admin-ajax.php(192): do_action('wp_ajax_cfapi_s...')
+#3 {main}
+  thrown in E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php on line 324
+[05-Jul-2025 12:19:36 UTC] PHP Warning:  Undefined variable $name in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 153
+[05-Jul-2025 12:19:37 UTC] PHP Warning:  Undefined variable $email in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 154
+[05-Jul-2025 12:19:37 UTC] PHP Warning:  Undefined variable $phone in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 155
+[05-Jul-2025 12:19:37 UTC] PHP Warning:  Undefined variable $gender in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 156
+[05-Jul-2025 12:19:37 UTC] PHP Warning:  Undefined variable $country in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 157
+[05-Jul-2025 12:39:12 UTC] PHP Warning:  wp_update_plugins(): An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/forums/">support forums</a>. (WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.) in E:\xampp\htdocs\wordpress-demo\wp-includes\functions.php on line 6121
+[06-Jul-2025 12:16:30 UTC] Automatic updates starting...
+[06-Jul-2025 12:16:31 UTC]   Automatic plugin updates starting...
+[06-Jul-2025 12:16:32 UTC]   Automatic plugin updates complete.
+[06-Jul-2025 12:16:33 UTC] Automatic updates complete.
