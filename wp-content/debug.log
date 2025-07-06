@@ -46,3 +46,79 @@ Stack trace:
 [06-Jul-2025 14:10:20 UTC] PHP Parse error:  syntax error, unexpected token "if", expecting "function" or "const" in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 183
 [06-Jul-2025 14:10:56 UTC] PHP Parse error:  syntax error, unexpected token "if", expecting "function" or "const" in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 183
 [06-Jul-2025 14:13:59 UTC] PHP Notice:  Function wpdb::prepare was called <strong>incorrectly</strong>. The query argument of wpdb::prepare() must have a placeholder. Please see <a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.9.0.) in E:\xampp\htdocs\wordpress-demo\wp-includes\functions.php on line 6121
+[06-Jul-2025 14:57:03 UTC] PHP Fatal error:  Uncaught TypeError: preg_match(): Argument #2 ($subject) must be of type string, array given in E:\xampp\htdocs\wordpress-demo\wp-includes\formatting.php:1596
+Stack trace:
+#0 E:\xampp\htdocs\wordpress-demo\wp-includes\formatting.php(1596): preg_match('/[\\x80-\\xff]/', Array)
+#1 E:\xampp\htdocs\wordpress-demo\wp-includes\formatting.php(2211): remove_accents(Array)
+#2 E:\xampp\htdocs\wordpress-demo\wp-admin\includes\plugin.php(1383): sanitize_title(Array)
+#3 E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php(162): add_menu_page('Custom Form Sub...', Array, 'dashicons-list-...', '26')
+#4 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(324): customFormApi->admin_menu('')
+#5 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#6 E:\xampp\htdocs\wordpress-demo\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#7 E:\xampp\htdocs\wordpress-demo\wp-admin\includes\menu.php(161): do_action('admin_menu', '')
+#8 E:\xampp\htdocs\wordpress-demo\wp-admin\menu.php(423): require_once('E:\\xampp\\htdocs...')
+#9 E:\xampp\htdocs\wordpress-demo\wp-admin\admin.php(159): require('E:\\xampp\\htdocs...')
+#10 {main}
+  thrown in E:\xampp\htdocs\wordpress-demo\wp-includes\formatting.php on line 1596
+[06-Jul-2025 14:57:03 UTC] PHP Fatal error:  Uncaught TypeError: preg_match(): Argument #2 ($subject) must be of type string, array given in E:\xampp\htdocs\wordpress-demo\wp-includes\formatting.php:1596
+Stack trace:
+#0 E:\xampp\htdocs\wordpress-demo\wp-includes\formatting.php(1596): preg_match('/[\\x80-\\xff]/', Array)
+#1 E:\xampp\htdocs\wordpress-demo\wp-includes\formatting.php(2211): remove_accents(Array)
+#2 E:\xampp\htdocs\wordpress-demo\wp-admin\includes\plugin.php(1383): sanitize_title(Array)
+#3 E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php(162): add_menu_page('Custom Form Sub...', Array, 'dashicons-list-...', '26')
+#4 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(324): customFormApi->admin_menu('')
+#5 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#6 E:\xampp\htdocs\wordpress-demo\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#7 E:\xampp\htdocs\wordpress-demo\wp-admin\includes\menu.php(161): do_action('admin_menu', '')
+#8 E:\xampp\htdocs\wordpress-demo\wp-admin\menu.php(423): require_once('E:\\xampp\\htdocs...')
+#9 E:\xampp\htdocs\wordpress-demo\wp-admin\admin.php(159): require('E:\\xampp\\htdocs...')
+#10 {main}
+  thrown in E:\xampp\htdocs\wordpress-demo\wp-includes\formatting.php on line 1596
+[06-Jul-2025 14:57:25 UTC] PHP Fatal error:  Uncaught TypeError: preg_match(): Argument #2 ($subject) must be of type string, array given in E:\xampp\htdocs\wordpress-demo\wp-includes\formatting.php:1596
+Stack trace:
+#0 E:\xampp\htdocs\wordpress-demo\wp-includes\formatting.php(1596): preg_match('/[\\x80-\\xff]/', Array)
+#1 E:\xampp\htdocs\wordpress-demo\wp-includes\formatting.php(2211): remove_accents(Array)
+#2 E:\xampp\htdocs\wordpress-demo\wp-admin\includes\plugin.php(1383): sanitize_title(Array)
+#3 E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php(162): add_menu_page('Custom Form Sub...', Array, 'dashicons-list-...', '26')
+#4 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(324): customFormApi->admin_menu('')
+#5 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#6 E:\xampp\htdocs\wordpress-demo\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#7 E:\xampp\htdocs\wordpress-demo\wp-admin\includes\menu.php(161): do_action('admin_menu', '')
+#8 E:\xampp\htdocs\wordpress-demo\wp-admin\menu.php(423): require_once('E:\\xampp\\htdocs...')
+#9 E:\xampp\htdocs\wordpress-demo\wp-admin\admin.php(159): require('E:\\xampp\\htdocs...')
+#10 {main}
+  thrown in E:\xampp\htdocs\wordpress-demo\wp-includes\formatting.php on line 1596
+[06-Jul-2025 14:57:40 UTC] PHP Fatal error:  Uncaught TypeError: Illegal offset type in isset or empty in E:\xampp\htdocs\wordpress-demo\wp-includes\capabilities.php:839
+Stack trace:
+#0 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-user.php(784): map_meta_cap(Array, 1)
+#1 E:\xampp\htdocs\wordpress-demo\wp-includes\capabilities.php(1018): WP_User->has_cap(Array)
+#2 E:\xampp\htdocs\wordpress-demo\wp-includes\capabilities.php(911): user_can(Object(WP_User), Array)
+#3 E:\xampp\htdocs\wordpress-demo\wp-admin\includes\plugin.php(1387): current_user_can(Array)
+#4 E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php(162): add_menu_page('Custom Form Sub...', 'Form Submission...', Array, 'dashicons-list-...', 26)
+#5 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(324): customFormApi->admin_menu('')
+#6 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#7 E:\xampp\htdocs\wordpress-demo\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#8 E:\xampp\htdocs\wordpress-demo\wp-admin\includes\menu.php(161): do_action('admin_menu', '')
+#9 E:\xampp\htdocs\wordpress-demo\wp-admin\menu.php(423): require_once('E:\\xampp\\htdocs...')
+#10 E:\xampp\htdocs\wordpress-demo\wp-admin\admin.php(159): require('E:\\xampp\\htdocs...')
+#11 {main}
+  thrown in E:\xampp\htdocs\wordpress-demo\wp-includes\capabilities.php on line 839
+[06-Jul-2025 14:58:12 UTC] Automatic updates starting...
+[06-Jul-2025 14:58:12 UTC]   Automatic plugin updates starting...
+[06-Jul-2025 14:58:13 UTC]   Automatic plugin updates complete.
+[06-Jul-2025 14:58:14 UTC] Automatic updates complete.
+[06-Jul-2025 15:05:09 UTC] PHP Fatal error:  Uncaught TypeError: strpos(): Argument #1 ($haystack) must be of type string, array given in E:\xampp\htdocs\wordpress-demo\wp-includes\functions.php:7360
+Stack trace:
+#0 E:\xampp\htdocs\wordpress-demo\wp-includes\functions.php(7360): strpos(Array, '://')
+#1 E:\xampp\htdocs\wordpress-demo\wp-includes\functions.php(2188): wp_is_stream(Array)
+#2 E:\xampp\htdocs\wordpress-demo\wp-includes\plugin.php(769): wp_normalize_path(Array)
+#3 E:\xampp\htdocs\wordpress-demo\wp-admin\includes\plugin.php(1381): plugin_basename(Array)
+#4 E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php(162): add_menu_page('Custom Form Sub...', 'Form Submission...', 'custom-form-sub...', Array, 'dashicons-list-...', 99)
+#5 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(324): customFormApi->admin_menu('')
+#6 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#7 E:\xampp\htdocs\wordpress-demo\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#8 E:\xampp\htdocs\wordpress-demo\wp-admin\includes\menu.php(161): do_action('admin_menu', '')
+#9 E:\xampp\htdocs\wordpress-demo\wp-admin\menu.php(423): require_once('E:\\xampp\\htdocs...')
+#10 E:\xampp\htdocs\wordpress-demo\wp-admin\admin.php(159): require('E:\\xampp\\htdocs...')
+#11 {main}
+  thrown in E:\xampp\htdocs\wordpress-demo\wp-includes\functions.php on line 7360

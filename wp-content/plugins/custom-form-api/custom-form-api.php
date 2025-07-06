@@ -166,7 +166,7 @@ public function admin_menu() {
         'custom-form-submissions',
         array($this, 'display_custom_form_submissions'),
         'dashicons-list-view',
-        26
+        99
     );
 }
 
