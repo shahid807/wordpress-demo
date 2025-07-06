@@ -15,11 +15,17 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed.' );
 
 class customFormApi
 {
-function activate()
+    private $wpdb;
+    public function __construct()
+    {
+        global $wpdb;
+        $this->wpdb = $wpdb;
+    }
+
+public function activate()
 {
-    global $wpdb;
-    $table_name = $wpdb->prefix . 'custom_form_submissions';
-    $charset_collate = $wpdb->get_charset_collate();
+    $table_name = $this->wpdb->prefix . 'custom_form_submissions';
+    $charset_collate = $this->wpdb->get_charset_collate();
 
     $sql = "DROP TABLE IF EXISTS $table_name;
     CREATE TABLE $table_name (
@@ -48,17 +54,15 @@ public function init()
 public function cfapi_display_form()
     {
         ob_start();
-        include plugin_dir_path( __FILE__ ) . 'form.php';
+        include plugin_dir_path( __FILE__ ) . 'views/form.php';
         return ob_get_clean();
     }
 public function enqueue_assets() {
-    // Bootstrap 5 CSS
     wp_enqueue_style(
         'bootstrap-css',
         'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'
     );
 
-    // Bootstrap 5 JS (optional, for components like modals)
     wp_enqueue_script(
         'bootstrap-js',
         'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js',
@@ -69,7 +73,7 @@ public function enqueue_assets() {
 
       wp_enqueue_script(
         'cfapi-form-script',
-        plugin_dir_url( __FILE__ ) . 'form-script.js',
+        plugin_dir_url( __FILE__ ) . 'js/form-script.js',
         array('jquery'), // dependencies    
         null, // version number
         true // load in footer
@@ -78,13 +82,12 @@ public function enqueue_assets() {
     
     wp_localize_script('cfapi-form-script', 'cfapi_obj', [
         'ajax_url' => admin_url('admin-ajax.php'),          // sends the AJAX URL
-        'nonce'    => wp_create_nonce('cfapi_nonce_action') // generates a secure nonce
+        'nonce'    => wp_create_nonce('cfapi_nonce_action') // generates a secure nonce token
     ]);
 }
 
 function cfapi_handle_form_submission() {
     check_ajax_referer('cfapi_nonce_action', 'security');
-    global $wpdb;
     $fields = [
         'name'    => 'Name is required.',
         'email'   => 'email is required.',
@@ -146,10 +149,10 @@ function cfapi_handle_form_submission() {
             $file_url = wp_get_attachment_url($attachment_id);
         }
 
-        // inbset the data into the database
+        // insert the data into the database
         $data['file_path'] = $file_url; // Add file path to data array
-        $wpdb->insert(
-            $wpdb->prefix . 'custom_form_submissions',
+        $this->wpdb->insert(
+            $this->wpdb->prefix . 'custom_form_submissions',
             $data,
             array_fill(0, count($data), '%s') // will add here placeholders for each field
         );
@@ -171,15 +174,14 @@ public function admin_menu() {
 }
 
 public function display_custom_form_submissions() {
-    global $wpdb;
-    $table_name = $wpdb->prefix . 'custom_form_submissions';
-    $submissions = $wpdb->get_results("SELECT * FROM $table_name ORDER BY id DESC");
+    $table_name = $this->wpdb->prefix . 'custom_form_submissions';
+    $submissions = $this->wpdb->get_results("SELECT * FROM $table_name ORDER BY id DESC");
 
     echo '<div class="wrap container mt-5">';
     echo '<h1 class="mb-4">Form Submissions</h1>';
 
     if (count($submissions) > 0) {
-        include(plugin_dir_path(__FILE__) . 'form-data.php');
+        include(plugin_dir_path(__FILE__) . 'views/form-data.php');
     } else {
         echo '<p>No submissions found.</p>';
     }
@@ -198,9 +200,8 @@ public function enqueue_admin_assets($hook) {
         'bootstrap-admin-css',
         'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'
     );
-}
-
-
+    
+  }
 
 }
 

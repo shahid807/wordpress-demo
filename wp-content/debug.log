@@ -122,3 +122,36 @@ Stack trace:
 #10 E:\xampp\htdocs\wordpress-demo\wp-admin\admin.php(159): require('E:\\xampp\\htdocs...')
 #11 {main}
   thrown in E:\xampp\htdocs\wordpress-demo\wp-includes\functions.php on line 7360
+[06-Jul-2025 18:23:36 UTC] PHP Warning:  include(E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api/form-data.php): Failed to open stream: No such file or directory in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 181
+[06-Jul-2025 18:23:36 UTC] PHP Warning:  include(): Failed opening 'E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api/form-data.php' for inclusion (include_path='E:\xampp\php\PEAR') in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 181
+[06-Jul-2025 18:24:43 UTC] PHP Warning:  include(E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api/&lt;views&gt;form-data.php): Failed to open stream: No such file or directory in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 181
+[06-Jul-2025 18:24:43 UTC] PHP Warning:  include(): Failed opening 'E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api/&lt;views&gt;form-data.php' for inclusion (include_path='E:\xampp\php\PEAR') in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 181
+[06-Jul-2025 18:28:24 UTC] PHP Notice:  Function register_uninstall_hook was called <strong>incorrectly</strong>. Only a static class method or function can be used in an uninstall hook. Please see <a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in E:\xampp\htdocs\wordpress-demo\wp-includes\functions.php on line 6121
+[06-Jul-2025 18:30:25 UTC] PHP Notice:  Function register_uninstall_hook was called <strong>incorrectly</strong>. Only a static class method or function can be used in an uninstall hook. Please see <a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in E:\xampp\htdocs\wordpress-demo\wp-includes\functions.php on line 6121
+[06-Jul-2025 18:31:41 UTC] PHP Notice:  Function register_uninstall_hook was called <strong>incorrectly</strong>. Only a static class method or function can be used in an uninstall hook. Please see <a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in E:\xampp\htdocs\wordpress-demo\wp-includes\functions.php on line 6121
+[06-Jul-2025 18:31:43 UTC] PHP Notice:  Function register_uninstall_hook was called <strong>incorrectly</strong>. Only a static class method or function can be used in an uninstall hook. Please see <a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in E:\xampp\htdocs\wordpress-demo\wp-includes\functions.php on line 6121
+[06-Jul-2025 18:31:47 UTC] PHP Notice:  Function register_uninstall_hook was called <strong>incorrectly</strong>. Only a static class method or function can be used in an uninstall hook. Please see <a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in E:\xampp\htdocs\wordpress-demo\wp-includes\functions.php on line 6121
+[06-Jul-2025 19:37:42 UTC] PHP Warning:  Undefined variable $wpdb in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 26
+[06-Jul-2025 19:37:42 UTC] PHP Warning:  Attempt to read property "prefix" on null in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 26
+[06-Jul-2025 19:37:42 UTC] PHP Warning:  Undefined variable $wpdb in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 27
+[06-Jul-2025 19:37:42 UTC] PHP Fatal error:  Uncaught Error: Call to a member function get_charset_collate() on null in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php:27
+Stack trace:
+#0 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(324): customFormApi->activate(false)
+#1 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#2 E:\xampp\htdocs\wordpress-demo\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 E:\xampp\htdocs\wordpress-demo\wp-admin\includes\plugin.php(703): do_action('activate_custom...', false)
+#4 E:\xampp\htdocs\wordpress-demo\wp-admin\plugins.php(60): activate_plugin('custom-form-api...', 'http://localhos...', false)
+#5 {main}
+  thrown in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 27
+[06-Jul-2025 19:37:53 UTC] PHP Warning:  Undefined variable $wpdb in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 26
+[06-Jul-2025 19:37:53 UTC] PHP Warning:  Attempt to read property "prefix" on null in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 26
+[06-Jul-2025 19:37:53 UTC] PHP Warning:  Undefined variable $wpdb in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 27
+[06-Jul-2025 19:37:53 UTC] PHP Fatal error:  Uncaught Error: Call to a member function get_charset_collate() on null in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php:27
+Stack trace:
+#0 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(324): customFormApi->activate(false)
+#1 E:\xampp\htdocs\wordpress-demo\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#2 E:\xampp\htdocs\wordpress-demo\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 E:\xampp\htdocs\wordpress-demo\wp-admin\includes\plugin.php(703): do_action('activate_custom...', false)
+#4 E:\xampp\htdocs\wordpress-demo\wp-admin\plugins.php(60): activate_plugin('custom-form-api...', 'http://localhos...', false)
+#5 {main}
+  thrown in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 27
