@@ -13,7 +13,7 @@ License: GPL2
 
 defined( 'ABSPATH' ) || die( 'No direct script access allowed.' );
 
-class customFormApi
+class CustomFormAPI
 {
     private $wpdb;
     public function __construct()
@@ -207,10 +207,10 @@ public function enqueue_admin_assets($hook) {
 
 
 // check if the class exists
-if ( class_exists( 'customFormApi' ) ) 
+if ( class_exists( 'CustomFormAPI' ) ) 
 {
     // create an instance of the class
-    $customFormApi = new customFormApi();
+    $customFormApi = new CustomFormAPI();
 
     // add the action to initialize the plugin
     add_action( 'init', [ $customFormApi, 'init' ] );
