@@ -27,8 +27,7 @@ public function activate()
     $table_name = $this->wpdb->prefix . 'custom_form_submissions';
     $charset_collate = $this->wpdb->get_charset_collate();
 
-    $sql = "DROP TABLE IF EXISTS $table_name;
-    CREATE TABLE $table_name (
+    $sql = "CREATE TABLE $table_name (
         id INT(11) NOT NULL AUTO_INCREMENT,
         name VARCHAR(100) DEFAULT NULL,
         email VARCHAR(100) DEFAULT NULL,
