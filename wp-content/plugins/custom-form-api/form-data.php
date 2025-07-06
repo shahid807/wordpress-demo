@@ -1,4 +1,6 @@
 <?php
+defined( 'ABSPATH' ) || die( 'No direct script access allowed.' );
+
 echo '<div class="table-responsive">';
         echo '<table class="table table-bordered table-striped align-middle">';
         echo '<thead class="table-dark"><tr>
