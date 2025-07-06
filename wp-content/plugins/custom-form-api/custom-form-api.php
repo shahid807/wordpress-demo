@@ -171,22 +171,31 @@ public function admin_menu() {
         99
     );
 }
-
 public function display_custom_form_submissions() {
-    $table_name = $this->wpdb->prefix . 'custom_form_submissions';
-    $submissions = $this->wpdb->get_results("SELECT * FROM $table_name ORDER BY id DESC");
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'custom_form_submissions';
+
+    // ✅ Check if the table exists
+    $table_exists = $wpdb->get_var("SHOW TABLES LIKE '$table_name'") === $table_name;
 
     echo '<div class="wrap container mt-5">';
     echo '<h1 class="mb-4">Form Submissions</h1>';
 
-    if (count($submissions) > 0) {
-        include(plugin_dir_path(__FILE__) . 'views/form-data.php');
+    if ($table_exists) {
+        $submissions = $wpdb->get_results("SELECT * FROM $table_name ORDER BY id DESC");
+
+        if (count($submissions) > 0) {
+            include(plugin_dir_path(__FILE__) . 'views/form-data.php');
+        } else {
+            echo '<p>No submissions found.</p>';
+        }
     } else {
-        echo '<p>No submissions found.</p>';
+        echo '<p class="text-danger"><strong>Database table not found.</strong> Please activate the plugin again to recreate the table.</p>';
     }
 
     echo '</div>';
 }
+
 
 
 public function enqueue_admin_assets($hook) {

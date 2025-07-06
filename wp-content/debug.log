@@ -155,3 +155,4 @@ Stack trace:
 #4 E:\xampp\htdocs\wordpress-demo\wp-admin\plugins.php(60): activate_plugin('custom-form-api...', 'http://localhos...', false)
 #5 {main}
   thrown in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 27
+[06-Jul-2025 20:17:38 UTC] WordPress database error Table 'wordpress_db.wp_custom_form_submissions' doesn't exist for query SELECT * FROM wp_custom_form_submissions ORDER BY id DESC made by do_action('toplevel_page_custom-form-submissions'), WP_Hook->do_action, WP_Hook->apply_filters, CustomFormAPI->display_custom_form_submissions
