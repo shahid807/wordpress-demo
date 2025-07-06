@@ -36,3 +36,13 @@ Stack trace:
 [06-Jul-2025 12:16:31 UTC]   Automatic plugin updates starting...
 [06-Jul-2025 12:16:32 UTC]   Automatic plugin updates complete.
 [06-Jul-2025 12:16:33 UTC] Automatic updates complete.
+[06-Jul-2025 14:00:19 UTC] PHP Parse error:  syntax error, unexpected token "if", expecting "function" or "const" in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 174
+[06-Jul-2025 14:01:54 UTC] PHP Parse error:  syntax error, unexpected token "if", expecting "function" or "const" in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 163
+[06-Jul-2025 14:03:56 UTC] PHP Parse error:  syntax error, unexpected identifier "display_custom_form_submissions", expecting variable in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 173
+[06-Jul-2025 14:05:47 UTC] PHP Parse error:  syntax error, unexpected token "if", expecting "function" or "const" in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 183
+[06-Jul-2025 14:07:31 UTC] PHP Parse error:  syntax error, unexpected token "if", expecting "function" or "const" in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 183
+[06-Jul-2025 14:08:49 UTC] PHP Parse error:  syntax error, unexpected token "if", expecting "function" or "const" in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 183
+[06-Jul-2025 14:10:14 UTC] PHP Parse error:  syntax error, unexpected token "if", expecting "function" or "const" in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 183
+[06-Jul-2025 14:10:20 UTC] PHP Parse error:  syntax error, unexpected token "if", expecting "function" or "const" in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 183
+[06-Jul-2025 14:10:56 UTC] PHP Parse error:  syntax error, unexpected token "if", expecting "function" or "const" in E:\xampp\htdocs\wordpress-demo\wp-content\plugins\custom-form-api\custom-form-api.php on line 183
+[06-Jul-2025 14:13:59 UTC] PHP Notice:  Function wpdb::prepare was called <strong>incorrectly</strong>. The query argument of wpdb::prepare() must have a placeholder. Please see <a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 3.9.0.) in E:\xampp\htdocs\wordpress-demo\wp-includes\functions.php on line 6121

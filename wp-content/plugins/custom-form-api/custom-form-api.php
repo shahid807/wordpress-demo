@@ -96,70 +96,114 @@ function cfapi_handle_form_submission() {
     $errors = [];
     $data = [];
 
-foreach ($fields as $field => $errorMsg) {
-    $value = isset($_POST[$field]) ? sanitize_text_field($_POST[$field]) : '';
-    if (empty($value)) {
-        $errors[] = $errorMsg;
+    foreach ($fields as $field => $errorMsg) {
+        $value = isset($_POST[$field]) ? sanitize_text_field($_POST[$field]) : '';
+        if (empty($value)) {
+            $errors[] = $errorMsg;
+        } else {
+            $data[$field] = $value;
+        }
+
+        if (isset($field) && $field === "email" && !is_email($value)) {
+            $errors[] = 'Email format is invalid.';
+        }
+    }
+
+    if (empty($_FILES['image_path']['name'])) {
+        $errors[] = 'Profile picture is required.';
     } else {
-        $data[$field] = $value;
+        $allowed_types = ['image/jpeg', 'image/png'];
+        $file_type = $_FILES['image_path']['type'];
+        $file_size = $_FILES['image_path']['size'];
+
+        if (!in_array($file_type, $allowed_types)) {
+            $errors[] = 'Only JPG and PNG files are allowed.';
+        }
+
+        if ($file_size > 2 * 1024 * 1024) { // 2MB limit
+            $errors[] = 'Image size should not exceed 2MB.';
+        }
     }
 
-    if (isset($field) && $field === "email" && !is_email($value)) {
-        $errors[] = 'Email format is invalid.';
-    }
-}
 
-if (empty($_FILES['image_path']['name'])) {
-    $errors[] = 'Profile picture is required.';
-} else {
-    $allowed_types = ['image/jpeg', 'image/png'];
-    $file_type = $_FILES['image_path']['type'];
-    $file_size = $_FILES['image_path']['size'];
-
-    if (!in_array($file_type, $allowed_types)) {
-        $errors[] = 'Only JPG and PNG files are allowed.';
-    }
-
-    if ($file_size > 2 * 1024 * 1024) { // 2MB limit
-        $errors[] = 'Image size should not exceed 2MB.';
-    }
-}
-
-
-    if (!empty($errors)) {
-        wp_send_json_error(['message' => implode('<br>', $errors)]);
-        wp_die();
-    }
-
-    // ✅ Handle file upload
-    $file_url = '';
-    if (!empty($_FILES['image_path']['name'])) {
-        require_once(ABSPATH . 'wp-admin/includes/file.php');
-        require_once(ABSPATH . 'wp-admin/includes/media.php');
-        require_once(ABSPATH . 'wp-admin/includes/image.php');
-
-        $attachment_id = media_handle_upload('image_path', 0);
-        if (is_wp_error($attachment_id)) {
-            wp_send_json_error(['message' => 'File upload failed.']);
+        if (!empty($errors)) {
+            wp_send_json_error(['message' => implode('<br>', $errors)]);
             wp_die();
         }
-        $file_url = wp_get_attachment_url($attachment_id);
+
+        // ✅ Handle file upload
+        $file_url = '';
+        if (!empty($_FILES['image_path']['name'])) {
+            require_once(ABSPATH . 'wp-admin/includes/file.php');
+            require_once(ABSPATH . 'wp-admin/includes/media.php');
+            require_once(ABSPATH . 'wp-admin/includes/image.php');
+
+            $attachment_id = media_handle_upload('image_path', 0);
+            if (is_wp_error($attachment_id)) {
+                wp_send_json_error(['message' => 'File upload failed.']);
+                wp_die();
+            }
+            $file_url = wp_get_attachment_url($attachment_id);
+        }
+
+        // inbset the data into the database
+        $data['file_path'] = $file_url; // Add file path to data array
+        $wpdb->insert(
+            $wpdb->prefix . 'custom_form_submissions',
+            $data,
+            array_fill(0, count($data), '%s') // will add here placeholders for each field
+        );
+
+        wp_send_json_success(['message' => 'Registration successful!']);
+        wp_die();
+}
+
+public function admin_menu() {
+    add_menu_page(
+        'Custom Form Submissions',
+        'Form Submissions',
+        'manage_options',
+        'custom-form-submissions',
+        array($this, 'display_custom_form_submissions'),
+        'dashicons-list-view',
+        26
+    );
+}
+
+public function display_custom_form_submissions() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'custom_form_submissions';
+    $submissions = $wpdb->get_results("SELECT * FROM $table_name ORDER BY id DESC");
+
+    echo '<div class="wrap container mt-5">';
+    echo '<h1 class="mb-4">Form Submissions</h1>';
+
+    if (count($submissions) > 0) {
+        include(plugin_dir_path(__FILE__) . 'form-data.php');
+    } else {
+        echo '<p>No submissions found.</p>';
     }
 
-    // inbset the data into the database
-    $data['file_path'] = $file_url; // Add file path to data array
-    $wpdb->insert(
-        $wpdb->prefix . 'custom_form_submissions',
-        $data,
-         array_fill(0, count($data), '%s') // will add here placeholders for each field
+    echo '</div>';
+}
+
+
+public function enqueue_admin_assets($hook) {
+    // Load only on your custom admin page
+    if ($hook !== 'toplevel_page_custom-form-submissions') {
+        return;
+    }
+
+    wp_enqueue_style(
+        'bootstrap-admin-css',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'
     );
-
-    wp_send_json_success(['message' => 'Registration successful!']);
-    wp_die();
 }
 
 
+
 }
+
 
 // check if the class exists
 if ( class_exists( 'customFormApi' ) ) 
@@ -168,15 +212,20 @@ if ( class_exists( 'customFormApi' ) )
     $customFormApi = new customFormApi();
 
     // add the action to initialize the plugin
-    add_action( 'init', array( $customFormApi, 'init' ) );
+    add_action( 'init', [ $customFormApi, 'init' ] );
     // add the action to enqueue assets
-    add_action( 'wp_enqueue_scripts', array( $customFormApi, 'enqueue_assets' ) );
+    add_action( 'wp_enqueue_scripts', [ $customFormApi, 'enqueue_assets']);
     // For logged in users
-    add_action('wp_ajax_cfapi_submit_form', array($customFormApi, 'cfapi_handle_form_submission'));
-    
+    add_action('wp_ajax_cfapi_submit_form', [ $customFormApi, 'cfapi_handle_form_submission']);
+
     // for non logged in users
-    add_action('wp_ajax_nopriv_cfapi_submit_form', array($customFormApi, 'cfapi_handle_form_submission'));
+    add_action('wp_ajax_nopriv_cfapi_submit_form', [ $customFormApi, 'cfapi_handle_form_submission']);
+
+    // add the action to create admin menu
+    add_action('admin_menu', [ $customFormApi, 'admin_menu']);
+    // add the action to enqueue admin assets
+    add_action('admin_enqueue_scripts', [ $customFormApi, 'enqueue_admin_assets']);
 
 }
 
-register_activation_hook( __FILE__, array( $customFormApi, 'activate' ) );
+register_activation_hook( __FILE__, [ $customFormApi, 'activate' ] );
